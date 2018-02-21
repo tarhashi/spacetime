@@ -122,3 +122,15 @@ test('funny-numeric-forms', t => {
   t.equal(a.format('numeric'), b.format('numeric'), 'dd/mm/yyyy')
   t.end();
 });
+
+test('YYYY-MM-DD hh:mm:ss input', t => {
+  let s = spacetime('2017-08-06 09:00:00');
+  t.ok(s.isValid(), 'obj input is valid');
+  t.equal(s.second(), 0, 'second');
+  t.equal(s.minute(), 0, 'minute');
+  t.equal(s.hour(), 9, 'hour');
+  t.equal(s.date(), 6, 'date');
+  t.equal(s.month(), 7, 'month');
+  t.equal(s.year(), 2017, 'year');
+  t.end();
+})

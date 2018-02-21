@@ -142,6 +142,20 @@ const strFmt = [
         date: arr[1]
       });
     }
+  },
+  // "2018-02-21 00:00:00" or "2018/02/21 00:00:00"
+  {
+    reg: /^([0-9]{4})[\-\/]([0-9]{1,2})[\-\/]([0-9]{1,2}) ([0-9.:]+)$/,
+    parse: (s, arr) => {
+      let month = parseInt(arr[2], 10) - 1
+      let date = parseInt(arr[3], 10)
+      walkTo(s, {
+        year: arr[1],
+        month: month,
+        date: date
+      });
+      parseHour(s, arr[4]);
+    }
   }
 ];
 
